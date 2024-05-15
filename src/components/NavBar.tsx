@@ -13,7 +13,7 @@ const NavBar = () => {
      opacity-95 sticky top-0 z-50"
     >
       <div className="flex gap-8 item-center text-2xl">
-        <div>
+        <div className="flex items-center justify-center">
           <GiHamburgerMenu />
         </div>
         <Link to="/">

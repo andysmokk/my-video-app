@@ -1,10 +1,15 @@
-import React from "react";
 import NavBar from "../components/NavBar";
+import SideBar from "../components/SideBar";
 
 function Home() {
   return (
-    <div>
-      <NavBar />
+    <div className="max-h-screen overflow-hidden">
+      <div style={{ height: "7.5vh" }}>
+        <NavBar />
+      </div>
+      <div className="flex" style={{ height: "92.5vh" }}>
+        <SideBar />
+      </div>
     </div>
   );
 }
