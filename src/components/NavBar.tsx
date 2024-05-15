@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
-import { BsYoutube } from "react-icons/bs";
+import { BsBell, BsCameraVideo, BsYoutube } from "react-icons/bs";
+import { TiMicrophone } from "react-icons/ti";
+import { IoAppsSharp } from "react-icons/io5";
 
 const NavBar = () => {
   return (
@@ -42,6 +44,27 @@ const NavBar = () => {
             </button>
           </div>
         </form>
+        <div className="text-xl p-3 bg-zinc-900 rounded-full">
+          <TiMicrophone />
+        </div>
+      </div>
+      <div className="flex gap-5 items-center text-xl">
+        <BsCameraVideo />
+        <IoAppsSharp />
+        <div className="relative">
+          <BsBell />
+          <span
+            className="absolute bottom-2 left-2 text-xs bg-red-600
+           rounded-full px-1"
+          >
+            9+
+          </span>
+        </div>
+        <img
+          src="https://img.freepik.com/free-photo/fashion-boy-with-yellow-jacket-blue-pants_71767-96.jpg?w=740&t=st=1715780134~exp=1715780734~hmac=617534c70b366090102f47322bc819dd110e23acffe3b0de461392ee0b18272c"
+          alt="logo"
+          className="h-8 w-9 rounded-full"
+        />
       </div>
     </div>
   );
