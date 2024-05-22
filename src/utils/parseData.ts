@@ -1,13 +1,13 @@
 import axios from "axios";
 import {
-  convertRawViewstoString,
+  convertRawViewsToString,
   parseVideoDuration,
   timeSince,
 } from "./index";
 import { YOUTUBE_API_URL } from "./constants";
-import { HomePageVideos } from "../Types";
+import { HomePageVideos } from "../types";
 
-const API_KEY = process.env.REACT_APP_YOTUBE_DATA_API_KEY;
+const API_KEY = process.env.REACT_APP_YOUTUBE_DATA_API_KEY;
 
 export const parseData = async (items: any[]) => {
   try {
@@ -76,7 +76,7 @@ export const parseData = async (items: any[]) => {
             videoDuration: parseVideoDuration(
               videosData[index].contentDetails.duration
             ),
-            videoViews: convertRawViewstoString(
+            videoViews: convertRawViewsToString(
               videosData[index].statistics.viewCount
             ),
             videoAge: timeSince(new Date(item.snippet.publishedAt)),

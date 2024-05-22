@@ -1,4 +1,4 @@
-export const convertRawViewstoString = (
+export const convertRawViewsToString = (
   labelValue: String,
   isSub = false
 ): string => {

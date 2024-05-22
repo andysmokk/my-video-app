@@ -4,6 +4,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "..";
 import { YOUTUBE_API_URL } from "../../utils/constants";
 import { parseData } from "../../utils";
+import { HomePageVideos } from "../../types";
 
 const API_KEY = process.env.REACT_APP_YOUTUBE_DATA_API_KEY;
 
@@ -21,6 +22,7 @@ export const getHomePageVideos = createAsyncThunk(
         isNext ? `pageToken=${nextPageTokenFromState}` : ""
       }`
     );
-    const parsedData = await parseData(items);
+    const parsedData: HomePageVideos[] = await parseData(items);
+    return { parsedData: [...videos, ...parsedData], nextPageToken };
   }
 );
