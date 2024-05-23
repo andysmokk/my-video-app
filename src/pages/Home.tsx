@@ -4,6 +4,8 @@ import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { getHomePageVideos } from "../store/reducers/getHomePageVideos";
+import Spinner from "../components/Spinner";
+import InfiniteScroll from "../components/InfiniteScroll";
 
 function Home() {
   const dispatch = useAppDispatch();
@@ -20,6 +22,8 @@ function Home() {
       </div>
       <div className="flex" style={{ height: "92.5vh" }}>
         <SideBar />
+        {/* {videos.length ? <InfiniteScroll></InfiniteScroll> : <Spinner />} */}
+        <Spinner />
       </div>
     </div>
   );
