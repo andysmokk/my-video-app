@@ -1,6 +1,7 @@
-import React from "react";
+import { HomePageVideos } from "../types";
 
-const Card = () => {
+const Card = ({ data }: { data: HomePageVideos }) => {
+    const isData = data ? true : false;
   return <div>Card</div>;
 };
 
