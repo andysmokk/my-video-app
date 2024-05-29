@@ -1,12 +1,32 @@
-import { Link } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { BsBell, BsCameraVideo, BsYoutube } from "react-icons/bs";
 import { TiMicrophone } from "react-icons/ti";
 import { IoAppsSharp } from "react-icons/io5";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { changeSearchTerm, clearVideos } from "../store";
 
 const NavBar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const searchTerm = useAppSelector((state) => state.youtubeApp.searchTerm);
+
+  const handleSearch = () => {
+    if (location.pathname !== "/search") {
+      navigate("/search");
+    } else {
+      dispatch(clearVideos());
+      dispatch(getSearchPageVideos(false));
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleSearch();
+  };
+
   return (
     <div
       className="flex justify-between items-center px-14 h-14 bg-[#212121]
@@ -24,7 +44,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="flex items-center justify-center gap-5">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="flex bg-zinc-900 items-center h-10 px-4 pr-0">
             <div className="flex gap-4 items-center pr-5">
               <div>
@@ -32,6 +52,8 @@ const NavBar = () => {
               </div>
               <input
                 type="text"
+                value={searchTerm}
+                onChange={(e) => dispatch(changeSearchTerm(e.target.value))}
                 className="w-96 bg-zinc-900 focus:outline-none border-none"
               />
               <AiOutlineClose className="cursor-pointer text-xl" />
