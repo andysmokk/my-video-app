@@ -14,11 +14,7 @@ const Card = ({ data }: { data: HomePageVideos }) => {
           {data.videoDuration}
         </span>
         <Link to={`/watch/${data.videoId}`}>
-          <img
-            src={data.videoThumbnail}
-            alt="thumbnail"
-            className="h-44 w-72"
-          />
+          <img src={data.videoThumbnail} alt="thumbnail" className=" w-72" />
         </Link>
       </div>
       <div className="flex gap-3">
