@@ -10,7 +10,7 @@ import Card from "../components/Card";
 import { HomePageVideos } from "../types";
 import { clearVideos } from "../store";
 
-function Home() {
+const Home = () => {
   const dispatch = useAppDispatch();
   const videos = useAppSelector((state) => state.youtubeApp.videos);
 
