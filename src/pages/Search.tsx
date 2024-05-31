@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { getHomePageVideos } from "../store/reducers/getHomePageVideos";
 import Spinner from "../components/Spinner";
-import Card from "../components/Card";
+import SearchCard from "../components/SearchCard";
 import { HomePageVideos } from "../types";
 import { clearVideos } from "../store";
 import { getSearchPageVideos } from "../store/reducers/getSearchPageVideos";
@@ -36,19 +35,23 @@ const Search = () => {
       <div className="flex" style={{ height: "92.5vh" }}>
         <SideBar />
         {videos.length ? (
-          <InfiniteScroll
-            dataLength={videos.length}
-            next={() => dispatch(getSearchPageVideos(true))}
-            hasMore={videos.length < 500}
-            loader={<Spinner />}
-            height={600}
-          >
-            <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
+          <div className="py-8 pl-8 flex-col gap-5 w-full">
+            <InfiniteScroll
+              dataLength={videos.length}
+              next={() => dispatch(getSearchPageVideos(true))}
+              hasMore={videos.length < 500}
+              loader={<Spinner />}
+              height={600}
+            >
               {videos.map((item: HomePageVideos) => {
-                return <Card data={item} key={item.videoId} />;
+                return (
+                  <div className="my-5">
+                    <SearchCard data={item} key={item.videoId} />
+                  </div>
+                );
               })}
-            </div>
-          </InfiniteScroll>
+            </InfiniteScroll>
+          </div>
         ) : (
           <Spinner />
         )}
